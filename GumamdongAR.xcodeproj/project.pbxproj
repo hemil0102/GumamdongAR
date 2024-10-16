@@ -6,13 +6,34 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C71C8EFE2CBFF96D00AC64BD /* ARCoreAugmentedFaces in Frameworks */ = {isa = PBXBuildFile; productRef = C71C8EFD2CBFF96D00AC64BD /* ARCoreAugmentedFaces */; };
+		C71C8F002CBFF96D00AC64BD /* ARCoreCloudAnchors in Frameworks */ = {isa = PBXBuildFile; productRef = C71C8EFF2CBFF96D00AC64BD /* ARCoreCloudAnchors */; };
+		C71C8F022CBFF96D00AC64BD /* ARCoreGARSession in Frameworks */ = {isa = PBXBuildFile; productRef = C71C8F012CBFF96D00AC64BD /* ARCoreGARSession */; };
+		C71C8F042CBFF96D00AC64BD /* ARCoreGeospatial in Frameworks */ = {isa = PBXBuildFile; productRef = C71C8F032CBFF96D00AC64BD /* ARCoreGeospatial */; };
+		C71C8F062CBFF96D00AC64BD /* ARCoreSemantics in Frameworks */ = {isa = PBXBuildFile; productRef = C71C8F052CBFF96D00AC64BD /* ARCoreSemantics */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		C71C8EE02CBFF88200AC64BD /* GumamdongAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GumamdongAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C71C8F082CBFFA0600AC64BD /* Exceptions for "GumamdongAR" folder in "GumamdongAR" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = C71C8EDF2CBFF88200AC64BD /* GumamdongAR */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C71C8EE22CBFF88200AC64BD /* GumamdongAR */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C71C8F082CBFFA0600AC64BD /* Exceptions for "GumamdongAR" folder in "GumamdongAR" target */,
+			);
 			path = GumamdongAR;
 			sourceTree = "<group>";
 		};
@@ -23,6 +44,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C71C8F022CBFF96D00AC64BD /* ARCoreGARSession in Frameworks */,
+				C71C8F042CBFF96D00AC64BD /* ARCoreGeospatial in Frameworks */,
+				C71C8EFE2CBFF96D00AC64BD /* ARCoreAugmentedFaces in Frameworks */,
+				C71C8F002CBFF96D00AC64BD /* ARCoreCloudAnchors in Frameworks */,
+				C71C8F062CBFF96D00AC64BD /* ARCoreSemantics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +91,11 @@
 			);
 			name = GumamdongAR;
 			packageProductDependencies = (
+				C71C8EFD2CBFF96D00AC64BD /* ARCoreAugmentedFaces */,
+				C71C8EFF2CBFF96D00AC64BD /* ARCoreCloudAnchors */,
+				C71C8F012CBFF96D00AC64BD /* ARCoreGARSession */,
+				C71C8F032CBFF96D00AC64BD /* ARCoreGeospatial */,
+				C71C8F052CBFF96D00AC64BD /* ARCoreSemantics */,
 			);
 			productName = GumamdongAR;
 			productReference = C71C8EE02CBFF88200AC64BD /* GumamdongAR.app */;
@@ -94,6 +125,9 @@
 			);
 			mainGroup = C71C8ED72CBFF88200AC64BD;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				C71C8EFC2CBFF96D00AC64BD /* XCRemoteSwiftPackageReference "arcore-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C71C8EE12CBFF88200AC64BD /* Products */;
 			projectDirPath = "";
@@ -252,6 +286,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GumamdongAR/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "For AR Camera";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "For Location Use";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -267,6 +304,10 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.harry.GumamdongAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -291,6 +332,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GumamdongAR/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "For AR Camera";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "For Location Use";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -306,6 +350,10 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.harry.GumamdongAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -339,6 +387,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C71C8EFC2CBFF96D00AC64BD /* XCRemoteSwiftPackageReference "arcore-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google-ar/arcore-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.46.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C71C8EFD2CBFF96D00AC64BD /* ARCoreAugmentedFaces */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C71C8EFC2CBFF96D00AC64BD /* XCRemoteSwiftPackageReference "arcore-ios-sdk" */;
+			productName = ARCoreAugmentedFaces;
+		};
+		C71C8EFF2CBFF96D00AC64BD /* ARCoreCloudAnchors */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C71C8EFC2CBFF96D00AC64BD /* XCRemoteSwiftPackageReference "arcore-ios-sdk" */;
+			productName = ARCoreCloudAnchors;
+		};
+		C71C8F012CBFF96D00AC64BD /* ARCoreGARSession */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C71C8EFC2CBFF96D00AC64BD /* XCRemoteSwiftPackageReference "arcore-ios-sdk" */;
+			productName = ARCoreGARSession;
+		};
+		C71C8F032CBFF96D00AC64BD /* ARCoreGeospatial */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C71C8EFC2CBFF96D00AC64BD /* XCRemoteSwiftPackageReference "arcore-ios-sdk" */;
+			productName = ARCoreGeospatial;
+		};
+		C71C8F052CBFF96D00AC64BD /* ARCoreSemantics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C71C8EFC2CBFF96D00AC64BD /* XCRemoteSwiftPackageReference "arcore-ios-sdk" */;
+			productName = ARCoreSemantics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C71C8ED82CBFF88200AC64BD /* Project object */;
 }
