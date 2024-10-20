@@ -23,7 +23,12 @@ final class ARViewController: ObservableObject {
     }
     
     private func startImageDetection() {
+        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
+            fatalError("이미지 추적 파일을 불러오는 것에 실패했습니다.")
+        }
+        
         let configuration = ARImageTrackingConfiguration()
+        configuration.trackingImages = referenceImages
         arView.session.run(configuration)
     }
 }

@@ -12,8 +12,9 @@ import RealityKit
 struct ARViewContainer: UIViewRepresentable {
     
     func makeUIView(context: Context) -> ARView {
-        ARViewController().arView
+        ARViewController().startARSession()
+        return ARViewController().arView
     }
     
-    func updateUIView(_ uiView: UIViewType, context: Context) { }
+    func updateUIView(_ uiView: UIViewType, context: Context) {}
 }
