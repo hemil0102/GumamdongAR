@@ -11,10 +11,29 @@ import RealityKit
 
 struct ARViewContainer: UIViewRepresentable {
     
+    class Coordinator: NSObject, ARSessionDelegate {
+        override init() {
+            super.init()
+            ARViewController.shared.arView.session.delegate = self
+        }
+        
+        func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
+            for anchor in anchors {
+                if let imageAnchor = anchor as? ARImageAnchor {
+                    print(imageAnchor)
+                }
+            }
+        }
+    }
+    
     func makeUIView(context: Context) -> ARView {
-        ARViewController().startARSession()
-        return ARViewController().arView
+        ARViewController.shared.startARSession()
+        return ARViewController.shared.arView
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {}
+    
+    func makeCoordinator() -> Coordinator {
+      return Coordinator()
+    }
 }
