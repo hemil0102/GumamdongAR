@@ -5,7 +5,10 @@
   },
   "resources" : [
     {
-      "filename" : "timetable.arreferenceimage"
+      "filename" : "timetable_chengla.arreferenceimage"
+    },
+    {
+      "filename" : "timetable_seoul.arreferenceimage"
     }
   ]
 }
