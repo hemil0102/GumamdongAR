@@ -1,0 +1,14 @@
+{
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "resources" : [
+    {
+      "filename" : "timetable_chengla.arreferenceimage"
+    },
+    {
+      "filename" : "timetable_seoul.arreferenceimage"
+    }
+  ]
+}
