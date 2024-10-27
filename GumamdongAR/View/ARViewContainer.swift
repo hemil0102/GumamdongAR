@@ -20,11 +20,27 @@ struct ARViewContainer: UIViewRepresentable {
         func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
             for anchor in anchors {
                 if let imageAnchor = anchor as? ARImageAnchor {
-                    print(imageAnchor)
+                    if let model = createMarker() {
+                        print(imageAnchor)
+                        
+                        let anchorEntity = AnchorEntity()
+                        anchorEntity.transform = Transform(matrix: imageAnchor.transform)
+                        anchorEntity.addChild(model)
+                        ARViewController.shared.arView.scene.addAnchor(anchorEntity)
+                    }
                 }
             }
         }
+        
+        func createMarker() -> ModelEntity? {
+            let boxResource = MeshResource.generateBox(size: 0.1)
+            let myMaterial = SimpleMaterial(color: .blue, isMetallic: true)
+            let myEntity = ModelEntity(mesh: boxResource, materials: [myMaterial])
+    
+            return myEntity
+        }
     }
+    
     
     func makeUIView(context: Context) -> ARView {
         ARViewController.shared.startARSession()

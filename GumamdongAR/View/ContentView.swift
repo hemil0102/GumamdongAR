@@ -16,7 +16,7 @@ struct ContentView: View {
             Button(action: {
                 print("버튼 눌림")
             }, label: {
-                Text("증강하기")
+                Text("마커생성")
                     .frame(maxHeight: 60)
                     .frame(maxWidth: .infinity)
                     .background(Color.yellow)
