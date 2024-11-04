@@ -22,9 +22,8 @@ struct ARViewContainer: UIViewRepresentable {
                 if let imageAnchor = anchor as? ARImageAnchor {
                     if let model = createMarker() {
                         print(imageAnchor)
-                        
-                        let anchorEntity = AnchorEntity()
-                        anchorEntity.transform = Transform(matrix: imageAnchor.transform)
+                        let anchorEntity = AnchorEntity(anchor: imageAnchor)
+                        //anchorEntity.transform = Transform(matrix: imageAnchor.transform) 이 줄이 불필요 
                         anchorEntity.addChild(model)
                         ARViewController.shared.arView.scene.addAnchor(anchorEntity)
                     }
