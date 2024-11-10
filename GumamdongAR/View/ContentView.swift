@@ -8,27 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var gpsManager = GPSManager()
+    
     var body: some View {
-        VStack {
+        ZStack {
             ARViewContainer()
                 .ignoresSafeArea()
-            
-            Button(action: {
-                print("버튼 눌림")
-            }, label: {
-                Text("마커생성")
-                    .frame(maxHeight: 60)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.yellow)
-                    .foregroundColor(.black)
-                    .cornerRadius(10)
-                    .padding()
-            })
 
+            VStack {
+                Spacer()
+                
+                if let coordinate = gpsManager.coordinate {
+                    Text("현재 기기 좌표: \(coordinate.latitude), \(coordinate.longitude)")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .foregroundStyle(.white)
+                        .background(Color.black.opacity(0.5))
+                }
+            }
         }
     }
 }
 
-#Preview {
-    ContentView()
-}
+

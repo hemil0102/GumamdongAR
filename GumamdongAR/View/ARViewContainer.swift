@@ -12,6 +12,8 @@ import RealityKit
 struct ARViewContainer: UIViewRepresentable {
     
     class Coordinator: NSObject, ARSessionDelegate {
+        @ObservedObject var gpsManager = GPSManager()
+        
         override init() {
             super.init()
             ARViewController.shared.arView.session.delegate = self
@@ -19,13 +21,17 @@ struct ARViewContainer: UIViewRepresentable {
         
         func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
             for anchor in anchors {
-                if let imageAnchor = anchor as? ARImageAnchor {
-                    if let model = createMarker() {
-                        print(imageAnchor)
-                        let anchorEntity = AnchorEntity(anchor: imageAnchor)
-                        //anchorEntity.transform = Transform(matrix: imageAnchor.transform) 이 줄이 불필요 
-                        anchorEntity.addChild(model)
-                        ARViewController.shared.arView.scene.addAnchor(anchorEntity)
+                let distance = gpsManager.getDisitance()
+                if distance < 15 {
+                    if let imageAnchor = anchor as? ARImageAnchor {
+                        if let model = createMarker() {
+                            print(imageAnchor)
+                            let anchorEntity = AnchorEntity(anchor: imageAnchor)
+                            //anchorEntity.transform = Transform(matrix: imageAnchor.transform) 이 줄이 불필요
+                            model.position.y = 0.2
+                            anchorEntity.addChild(model)
+                            ARViewController.shared.arView.scene.addAnchor(anchorEntity)
+                        }
                     }
                 }
             }
