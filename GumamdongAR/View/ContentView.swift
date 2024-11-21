@@ -12,8 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            ARViewContainer()
-                .ignoresSafeArea()
+            ARViewContainer().ignoresSafeArea()
 
             VStack {
                 Spacer()

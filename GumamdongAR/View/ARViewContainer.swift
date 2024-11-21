@@ -10,10 +10,9 @@ import ARKit
 import RealityKit
 
 struct ARViewContainer: UIViewRepresentable {
+    @ObservedObject var gpsManager = GPSManager()
     
     class Coordinator: NSObject, ARSessionDelegate {
-        @ObservedObject var gpsManager = GPSManager()
-        
         override init() {
             super.init()
             ARViewController.shared.arView.session.delegate = self
@@ -21,17 +20,13 @@ struct ARViewContainer: UIViewRepresentable {
         
         func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
             for anchor in anchors {
-                let distance = gpsManager.getDisitance()
-                if distance < 15 {
-                    if let imageAnchor = anchor as? ARImageAnchor {
-                        if let model = createMarker() {
-                            print(imageAnchor)
-                            let anchorEntity = AnchorEntity(anchor: imageAnchor)
-                            //anchorEntity.transform = Transform(matrix: imageAnchor.transform) 이 줄이 불필요
-                            model.position.y = 0.2
-                            anchorEntity.addChild(model)
-                            ARViewController.shared.arView.scene.addAnchor(anchorEntity)
-                        }
+                if let imageAnchor = anchor as? ARImageAnchor {
+                    if let model = createMarker() {
+                        print(imageAnchor)
+                        let anchorEntity = AnchorEntity(anchor: imageAnchor)
+                        model.position.y = 0.2
+                        anchorEntity.addChild(model)
+                        ARViewController.shared.arView.scene.addAnchor(anchorEntity)
                     }
                 }
             }
@@ -44,15 +39,26 @@ struct ARViewContainer: UIViewRepresentable {
     
             return myEntity
         }
+        
+        func removeAllAnchors() {
+            ARViewController.shared.arView.scene.anchors.removeAll()
+        }
     }
     
-    
+    // 맨 처음에 한번만 호출 되어서 화면을 만든다.
     func makeUIView(context: Context) -> ARView {
-        ARViewController.shared.startARSession()
         return ARViewController.shared.arView
     }
     
-    func updateUIView(_ uiView: UIViewType, context: Context) {}
+    // SwiftUI의 데이터 상태가 변경될 때마다 호출한다.
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        let distance = gpsManager.getDisitance()
+        if distance < 15 {
+            ARViewController.shared.startARSession()
+        } else {
+            ARViewController.shared.arView.scene.anchors.removeAll()
+        }
+    }
     
     func makeCoordinator() -> Coordinator {
       return Coordinator()
