@@ -53,10 +53,10 @@ struct ARViewContainer: UIViewRepresentable {
     // SwiftUI의 데이터 상태가 변경될 때마다 호출한다.
     func updateUIView(_ uiView: UIViewType, context: Context) {
         let distance = gpsManager.getDisitance()
-        if distance < 15 {
+        if distance < 10 {
             ARViewController.shared.startARSession()
         } else {
-            ARViewController.shared.arView.scene.anchors.removeAll()
+            ARViewController.shared.stopImageTracking()
         }
     }
     

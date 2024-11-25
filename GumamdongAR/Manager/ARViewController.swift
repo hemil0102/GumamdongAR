@@ -31,4 +31,10 @@ final class ARViewController: ObservableObject {
         configuration.trackingImages = referenceImages
         arView.session.run(configuration)
     }
+    
+    public func stopImageTracking() {
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.detectionImages = nil
+        arView.session.run(configuration, options: .removeExistingAnchors)
+    }
 }
