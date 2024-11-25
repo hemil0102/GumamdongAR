@@ -11,6 +11,7 @@ import CoreLocation
 class GPSManager: NSObject, ObservableObject, CLLocationManagerDelegate {
   
     @Published var targetCoordinate: CLLocationCoordinate2D? = CLLocationCoordinate2D(latitude: 37.569126, longitude: 126.672919)
+    // @Published var targetCoordinate: CLLocationCoordinate2D? = CLLocationCoordinate2D(latitude: 37.550287, longitude: 126.678213)
     @Published var coordinate: CLLocationCoordinate2D? = nil
     private var locationManager: CLLocationManager?
     

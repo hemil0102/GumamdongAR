@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            ARViewContainer().ignoresSafeArea()
+            ARViewContainer(gpsManager: gpsManager).ignoresSafeArea()
             
             VStack {
                 Spacer()

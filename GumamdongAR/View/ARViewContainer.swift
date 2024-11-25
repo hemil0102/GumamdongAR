@@ -10,7 +10,7 @@ import ARKit
 import RealityKit
 
 struct ARViewContainer: UIViewRepresentable {
-    @ObservedObject var gpsManager = GPSManager()
+    @ObservedObject var gpsManager: GPSManager
     
     class Coordinator: NSObject, ARSessionDelegate {
         override init() {
@@ -52,10 +52,17 @@ struct ARViewContainer: UIViewRepresentable {
     
     // SwiftUI의 데이터 상태가 변경될 때마다 호출한다.
     func updateUIView(_ uiView: UIViewType, context: Context) {
+        let currentTime = Date()
+        print("1. updateUIView: \(currentTime)")
+        
         let distance = gpsManager.getDisitance()
-        if distance < 10 {
+        print("2. distance: \(distance)")
+        
+        if distance < 15 {
+            print("세션 시작 중...")
             ARViewController.shared.startARSession()
         } else {
+            print("세션 중단 중...")
             ARViewController.shared.stopImageTracking()
         }
     }
