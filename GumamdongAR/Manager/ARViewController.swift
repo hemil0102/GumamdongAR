@@ -18,18 +18,22 @@ final class ARViewController: ObservableObject {
         self.arView = ARView(frame: .zero)
     }
     
-    public func startARSession() {
-        startImageDetection()
+    public func startWorldTracking() {
+        let configuration = ARWorldTrackingConfiguration()
+        arView.session.run(configuration)
     }
     
-    private func startImageDetection() {
+    public func startImageDetection() {
         guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
             fatalError("이미지 추적 파일을 불러오는 것에 실패했습니다.")
         }
         
-        let configuration = ARImageTrackingConfiguration()
-        configuration.trackingImages = referenceImages
-        arView.session.run(configuration)
+        if let currentConfiguration = arView.session.configuration as? ARWorldTrackingConfiguration {
+            // 기존 설정에 이미지 인식 추가
+            currentConfiguration.detectionImages = referenceImages
+            currentConfiguration.maximumNumberOfTrackedImages = 1 // 추적할 이미지 수 제한
+            arView.session.run(currentConfiguration, options: [])
+        }
     }
     
     public func stopImageTracking() {

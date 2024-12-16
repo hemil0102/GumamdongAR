@@ -60,7 +60,7 @@ struct ARViewContainer: UIViewRepresentable {
         
         if distance < 15 {
             print("세션 시작 중...")
-            ARViewController.shared.startARSession()
+            ARViewController.shared.startImageDetection()
         } else {
             print("세션 중단 중...")
             ARViewController.shared.stopImageTracking()
